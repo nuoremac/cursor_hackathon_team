@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FinAudit — Backend (Personne 2)
 
-## Getting Started
+API REST de **détection d'anomalies comptables** par règles déterministes.
+Projet Next.js 16 (App Router) + TypeScript, **séparé du frontend**, tournant sur le port **3001**.
 
-First, run the development server:
+## Démarrage
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install      # déjà fait si node_modules existe
+npm run dev      # démarre sur http://localhost:3001
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Accueil / sommaire : <http://localhost:3001>
+- **Documentation Swagger** : <http://localhost:3001/api-docs>
+- Spec OpenAPI brute (JSON) : <http://localhost:3001/api/openapi>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Endpoints
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Méthode | Route | Description |
+|---|---|---|
+| `GET` | `/api/demo-data` | Charge le CSV de démo audité → `{ transactions, findings, metrics }`. |
+| `POST` | `/api/analyze` | Analyse un CSV uploadé (`multipart/form-data`, champ `file`) → `{ findings, metrics }`. |
+| `GET` | `/api/openapi` | Spécification OpenAPI au format JSON. |
 
-## Learn More
+### Exemples
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Données de démo auditées
+curl http://localhost:3001/api/demo-data
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Analyse d'un fichier CSV
+curl -F "file=@src/data/demo-transactions.csv" http://localhost:3001/api/analyze
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Structure
 
-## Deploy on Vercel
+```
+src/
+├── lib/
+│   ├── types.ts          # Contrats de données (Transaction, AuditFinding, metrics)
+│   ├── constants.ts      # Seuils métier centralisés
+│   ├── csvParser.ts      # Parsing + normalisation CSV (PapaParse)
+│   ├── auditEngine.ts    # runAudit() : orchestration + agrégation + métriques
+│   ├── demoData.ts       # Chargement du CSV de démo
+│   ├── cors.ts           # Helpers CORS partagés
+│   ├── openapi.ts        # Spécification OpenAPI
+│   └── rules/            # Une règle de détection par fichier
+│       ├── rule.ts            # Contrat commun (TransactionRule, RuleContext)
+│       ├── index.ts           # Catalogue des règles
+│       ├── duplicateInvoice.ts
+│       ├── missingAccountCode.ts
+│       ├── negativeAmount.ts
+│       ├── largeAmount.ts
+│       ├── weekendTransaction.ts
+│       ├── roundAmount.ts
+│       ├── rareVendor.ts
+│       └── balanceCheck.ts    # Règle GLOBALE (déséquilibre débit/crédit)
+├── app/
+│   ├── page.tsx          # Page d'accueil (sommaire des endpoints)
+│   ├── api-docs/page.tsx # Interface Swagger UI
+│   └── api/
+│       ├── analyze/route.ts
+│       ├── demo-data/route.ts
+│       └── openapi/route.ts
+└── data/
+    └── demo-transactions.csv   # Jeu de démo (couvre toutes les anomalies)
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Règles de détection
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+8 règles déterministes (détail et seuils dans **[`DECISIONS.md`](./DECISIONS.md)**) :
+doublon de facture, code comptable manquant, montant négatif, montant très élevé,
+déséquilibre débit/crédit global, transaction le week-end, montant rond suspect,
+fournisseur rare avec montant élevé.
+
+> Les choix de conception et la levée des ambiguïtés sont documentés dans
+> **[`DECISIONS.md`](./DECISIONS.md)**.

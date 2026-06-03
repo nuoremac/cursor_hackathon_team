@@ -1,13 +1,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Polices système : aucune dépendance réseau (robuste pour la démo). */
+  --font-geist-sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-geist-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 html {
@@ -40,10 +36,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
