@@ -82,7 +82,7 @@ export function Sidebar() {
                 alt={APP_NAME}
                 fill
                 sizes="28px"
-                className="scale-[1.7] object-contain"
+                className="object-cover"
                 priority
               />
             </span>

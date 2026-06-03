@@ -84,7 +84,7 @@ export default function LandingPage() {
               alt={APP_NAME}
               fill
               sizes="36px"
-              className="scale-[1.7] object-contain"
+              className="object-cover"
               priority
             />
           </span>
