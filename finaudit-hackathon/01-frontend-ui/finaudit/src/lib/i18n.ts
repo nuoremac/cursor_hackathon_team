@@ -1,16 +1,17 @@
 import type { Locale } from "./types";
 
 const en = {
-  // App / brand
-  "app.name": "Audit Radar",
+  // App / brand (note: the app name itself is a non-translatable constant
+  // exposed via APP_NAME in lib/constants.ts — do not add it here.)
   "app.tagline": "Audit Assistant",
 
   // Landing page
   "landing.badge": "AI-powered audit assistant",
-  "landing.titleLine1": "Spot risky transactions,",
-  "landing.titleLine2": "in just a few seconds.",
+  "landing.kicker": "AI accounting audit",
+  "landing.titleLine1": "Accounting Anomaly Detector",
+  "landing.titleLine2": "",
   "landing.subtitle":
-    "Audit Radar analyses your accounting entries, highlights anomalies and tells the auditor exactly what to check.",
+    "FinAudit analyses your accounting entries, highlights anomalies and tells the auditor exactly what to check.",
   "landing.start": "Get started",
   "landing.note": "No account required — instant access to the dashboard.",
   "landing.feature1.title": "Anomaly detection",
@@ -182,14 +183,14 @@ export type TranslationKey = keyof typeof en;
 type Dictionary = Record<TranslationKey, string>;
 
 const fr: Dictionary = {
-  "app.name": "Audit Radar",
   "app.tagline": "Assistant d'audit",
 
   "landing.badge": "Assistant d'audit propulsé par l'IA",
-  "landing.titleLine1": "Détectez les transactions à risque,",
-  "landing.titleLine2": "en quelques secondes.",
+  "landing.kicker": "Audit comptable par IA",
+  "landing.titleLine1": "Détecteur d'Anomalies Comptables",
+  "landing.titleLine2": "",
   "landing.subtitle":
-    "Audit Radar analyse vos écritures comptables, met en évidence les anomalies et explique à l'auditeur ce qu'il faut vérifier.",
+    "FinAudit analyse vos écritures comptables, met en évidence les anomalies et explique à l'auditeur ce qu'il faut vérifier.",
   "landing.start": "Commencer",
   "landing.note": "Aucun compte requis — accès immédiat au tableau de bord.",
   "landing.feature1.title": "Détection d'anomalies",

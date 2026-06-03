@@ -12,6 +12,7 @@ import {
 } from "@tabler/icons-react";
 import type { Icon } from "@tabler/icons-react";
 import type { Locale } from "@/lib/types";
+import { APP_NAME } from "@/lib/constants";
 import { translate, type TranslationKey } from "@/lib/i18n";
 
 const FEATURES: {
@@ -80,16 +81,16 @@ export default function LandingPage() {
           <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-[#0b1a2b] ring-1 ring-white/15">
             <Image
               src="/logo.png"
-              alt="Audit Radar"
+              alt={APP_NAME}
               fill
               sizes="36px"
               className="scale-[1.7] object-contain"
               priority
             />
           </span>
-          <span className="text-[16px] font-semibold tracking-tight text-white sm:text-[17px]">
-            Audit Radar
-          </span>
+            <span className="text-[16px] font-semibold tracking-tight text-white sm:text-[17px]">
+              {APP_NAME}
+            </span>
         </div>
 
         <LocaleSwitch locale={locale} onChange={changeLocale} />
@@ -102,9 +103,17 @@ export default function LandingPage() {
           {t("landing.badge")}
         </span>
 
+        <p className="mb-3 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#7eb0e8]">
+          {t("landing.kicker")}
+        </p>
+
         <h1 className="text-balance text-[30px] font-semibold leading-[1.15] tracking-tight text-white sm:text-[44px] md:text-[48px]">
           {t("landing.titleLine1")}
-          <br className="hidden sm:block" /> {t("landing.titleLine2")}
+          {t("landing.titleLine2") ? (
+            <>
+              <br className="hidden sm:block" /> {t("landing.titleLine2")}
+            </>
+          ) : null}
         </h1>
 
         <p className="mt-6 max-w-xl text-[14px] leading-relaxed text-white/80 sm:mt-7 sm:text-[15px]">
@@ -145,7 +154,7 @@ export default function LandingPage() {
       </section>
 
       <footer className="relative z-10 px-6 py-8 text-center text-[11px] text-white/50">
-        © {new Date().getFullYear()} Audit Radar — {t("landing.footer")}
+        © {new Date().getFullYear()} {APP_NAME} — {t("landing.footer")}
       </footer>
     </main>
   );

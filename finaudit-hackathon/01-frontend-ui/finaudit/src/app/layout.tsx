@@ -15,7 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Audit Radar — AI accounting anomaly detector",
+  title: "FinAudit — AI accounting anomaly detector",
   description:
     "Enterprise audit assistant that detects risky accounting transactions and explains them with AI.",
   icons: { icon: "/logo.png" },

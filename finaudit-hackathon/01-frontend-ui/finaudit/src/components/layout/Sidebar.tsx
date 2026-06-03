@@ -15,6 +15,7 @@ import {
 } from "@tabler/icons-react";
 import type { Icon } from "@tabler/icons-react";
 import { useApp } from "@/context/AppContext";
+import { APP_NAME } from "@/lib/constants";
 import type { SectionId } from "@/lib/types";
 import type { TranslationKey } from "@/lib/i18n";
 
@@ -73,12 +74,12 @@ export function Sidebar() {
             type="button"
             onClick={() => go("dashboard")}
             className="flex min-w-0 flex-1 items-center gap-2 text-left"
-            aria-label={t("app.name")}
+            aria-label={APP_NAME}
           >
             <span className="relative flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-md bg-[#0b1a2b] ring-1 ring-[var(--border)]">
               <Image
                 src="/logo.png"
-                alt={t("app.name")}
+                alt={APP_NAME}
                 fill
                 sizes="28px"
                 className="scale-[1.7] object-contain"
@@ -88,7 +89,7 @@ export function Sidebar() {
             {!collapsed ? (
               <span className="flex min-w-0 flex-col leading-tight">
                 <span className="truncate text-[14px] font-medium text-tprimary">
-                  {t("app.name")}
+                  {APP_NAME}
                 </span>
                 <span className="truncate text-[11px] text-tmuted">
                   {t("app.tagline")}
