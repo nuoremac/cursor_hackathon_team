@@ -1,0 +1,11 @@
+date,accountCode,description,vendor,invoiceNumber,debit,credit,amount
+2026-05-01,601,Achat materiel informatique,TechPro,INV-001,500000,0,500000
+2026-05-02,602,Prestation consultant,ConsultPlus,INV-002,1200000,0,1200000
+2026-05-04,,Paiement fournisseur inconnu,Unknown Vendor,INV-003,300000,0,300000
+2026-05-04,601,Achat materiel informatique,TechPro,INV-001,500000,0,500000
+2026-05-09,607,Achat licences annuelles,SoftCloud,INV-004,2500000,0,2500000
+2026-05-10,606,Paiement weekend urgent,FastService,INV-005,800000,0,800000
+2026-05-12,605,Frais de bureau,OfficePlus,INV-006,85000,0,85000
+2026-05-13,604,Correction ecriture negative,Internal Adjustment,INV-007,-150000,0,-150000
+2026-05-14,603,Paiement fournisseur rare,NewVendorX,INV-008,1800000,0,1800000
+2026-05-15,701,Vente prestation client,ClientA,SALE-001,0,900000,900000
