@@ -1,0 +1,275 @@
+@import "tailwindcss";
+
+/* ───────────────────────── Design tokens ───────────────────────── */
+:root {
+  --page: #f7f8fa;
+  --surface: #ffffff;
+  --surface-2: #f9fafb;
+  --sidebar: #ffffff;
+  --border: #e5e7eb;
+  --border-subtle: #f3f4f6;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --accent: #1e3a5f;
+  --accent-hover: #162d4a;
+  --accent-soft: #eff6ff;
+  --on-accent: #ffffff;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+
+  /* Risk badge backgrounds / text */
+  --badge-high-bg: #fee2e2;
+  --badge-high-text: #991b1b;
+  --badge-medium-bg: #fef3c7;
+  --badge-medium-text: #92400e;
+  --badge-low-bg: #dbeafe;
+  --badge-low-text: #1e40af;
+  --badge-normal-bg: #f3f4f6;
+  --badge-normal-text: #374151;
+
+  /* Suspicious row tints */
+  --row-high-bg: #fef2f2;
+  --row-high-border: #ef4444;
+  --row-medium-bg: #fffbeb;
+  --row-medium-border: #f59e0b;
+  --row-low-bg: #eff6ff;
+  --row-low-border: #3b82f6;
+}
+
+[data-theme="dark"] {
+  --page: #0f1117;
+  --surface: #1a1d27;
+  --surface-2: #1f2330;
+  --sidebar: #13151e;
+  --border: #2d3148;
+  --border-subtle: #232636;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --accent: #4f7fbf;
+  --accent-hover: #6593cf;
+  --accent-soft: #0f1d2e;
+  --on-accent: #ffffff;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+
+  --badge-high-bg: #450a0a;
+  --badge-high-text: #fca5a5;
+  --badge-medium-bg: #451a03;
+  --badge-medium-text: #fde68a;
+  --badge-low-bg: #1e3a5f;
+  --badge-low-text: #93c5fd;
+  --badge-normal-bg: #1f2937;
+  --badge-normal-text: #d1d5db;
+
+  --row-high-bg: #1c0a0a;
+  --row-high-border: #dc2626;
+  --row-medium-bg: #1c1810;
+  --row-medium-border: #d97706;
+  --row-low-bg: #0f1d2e;
+  --row-low-border: #3b82f6;
+}
+
+/* ───────────────────── Tailwind theme mapping ───────────────────── */
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-sidebar: var(--sidebar);
+  --color-line: var(--border);
+  --color-line-subtle: var(--border-subtle);
+  --color-tprimary: var(--text-primary);
+  --color-tsecondary: var(--text-secondary);
+  --color-tmuted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* ───────────────────────── Base styles ───────────────────────── */
+* {
+  border-color: var(--border);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background: var(--page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+/* Smooth theme transition on surfaces / borders */
+.theme-transition,
+.theme-transition * {
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+/* Focus ring — 2px navy, 2px offset */
+:where(button, a, input, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Numeric / monospace cells */
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ───────────────────────── Risk badges ───────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.badge-high {
+  background: var(--badge-high-bg);
+  color: var(--badge-high-text);
+}
+.badge-medium {
+  background: var(--badge-medium-bg);
+  color: var(--badge-medium-text);
+}
+.badge-low {
+  background: var(--badge-low-bg);
+  color: var(--badge-low-text);
+}
+.badge-normal {
+  background: var(--badge-normal-bg);
+  color: var(--badge-normal-text);
+}
+
+/* ─────────────────── Suspicious table-row tints ─────────────────── */
+.row-high {
+  background: var(--row-high-bg);
+  box-shadow: inset 3px 0 0 0 var(--row-high-border);
+}
+.row-medium {
+  background: var(--row-medium-bg);
+  box-shadow: inset 3px 0 0 0 var(--row-medium-border);
+}
+.row-low {
+  background: var(--row-low-bg);
+  box-shadow: inset 3px 0 0 0 var(--row-low-border);
+}
+
+/* ───────────────────── Table header labels ───────────────────── */
+.col-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ───────────────────────── Animations ───────────────────────── */
+@keyframes shimmer {
+  0% {
+    background-position: -480px 0;
+  }
+  100% {
+    background-position: 480px 0;
+  }
+}
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--border-subtle) 25%,
+    var(--border) 37%,
+    var(--border-subtle) 63%
+  );
+  background-size: 960px 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 6px;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 300ms ease-out both;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.card-in {
+  animation: cardIn 320ms ease-out both;
+}
+
+.press:active {
+  transform: scale(0.97);
+}
+
+/* ───────────────────────── Scrollbars ───────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

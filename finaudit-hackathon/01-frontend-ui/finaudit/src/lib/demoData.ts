@@ -1,0 +1,123 @@
+import type { AuditFinding, Transaction } from "./types";
+import { runAudit } from "./audit";
+
+/**
+ * 10 typed demo transactions. Designed so a fresh audit yields exactly
+ * 7 anomalies (4 high risk), matching the dashboard reference figures:
+ *   total debit 8,935,000 FCFA · total credit 900,000 FCFA · gap 8,035,000.
+ */
+export const DEMO_TRANSACTIONS: Transaction[] = [
+  {
+    id: "txn-001",
+    date: "2026-05-01",
+    accountCode: "601",
+    description: "Achat matériel informatique",
+    vendor: "TechPro SARL",
+    invoiceNumber: "INV-001",
+    debit: 500_000,
+    credit: 0,
+    amount: 500_000,
+  },
+  {
+    id: "txn-002",
+    date: "2026-05-04",
+    accountCode: "602",
+    description: "Prestation de conseil annuelle",
+    vendor: "Consult Plus",
+    invoiceNumber: "INV-002",
+    debit: 2_600_000,
+    credit: 0,
+    amount: 2_600_000,
+  },
+  {
+    id: "txn-003",
+    date: "2026-05-05",
+    accountCode: "",
+    description: "Paiement fournisseur inconnu",
+    vendor: "Unknown Vendor",
+    invoiceNumber: "INV-003",
+    debit: 300_000,
+    credit: 0,
+    amount: 300_000,
+  },
+  {
+    id: "txn-004",
+    date: "2026-05-06",
+    accountCode: "601",
+    description: "Achat matériel informatique",
+    vendor: "TechPro SARL",
+    invoiceNumber: "INV-001",
+    debit: 500_000,
+    credit: 0,
+    amount: 500_000,
+  },
+  {
+    id: "txn-005",
+    date: "2026-05-07",
+    accountCode: "604",
+    description: "Achat licences annuelles SoftCloud",
+    vendor: "SoftCloud",
+    invoiceNumber: "INV-004",
+    debit: 2_500_000,
+    credit: 0,
+    amount: 2_500_000,
+  },
+  {
+    id: "txn-006",
+    date: "2026-05-10",
+    accountCode: "621",
+    description: "Paiement week-end urgent",
+    vendor: "FastService",
+    invoiceNumber: "INV-005",
+    debit: 800_000,
+    credit: 0,
+    amount: 800_000,
+  },
+  {
+    id: "txn-007",
+    date: "2026-05-11",
+    accountCode: "621",
+    description: "Frais de bureau",
+    vendor: "OfficePlus",
+    invoiceNumber: "INV-006",
+    debit: 85_000,
+    credit: 0,
+    amount: 85_000,
+  },
+  {
+    id: "txn-008",
+    date: "2026-05-12",
+    accountCode: "604",
+    description: "Correction écriture négative",
+    vendor: "Internal Adjustment",
+    invoiceNumber: "INV-007",
+    debit: -150_000,
+    credit: 0,
+    amount: -150_000,
+  },
+  {
+    id: "txn-009",
+    date: "2026-05-13",
+    accountCode: "602",
+    description: "Prestation fournisseur rare",
+    vendor: "NewVendorX",
+    invoiceNumber: "INV-008",
+    debit: 1_800_000,
+    credit: 0,
+    amount: 1_800_000,
+  },
+  {
+    id: "txn-010",
+    date: "2026-05-14",
+    accountCode: "701",
+    description: "Vente prestation client A",
+    vendor: "Agence Cameroun Media",
+    invoiceNumber: "INV-009",
+    debit: 0,
+    credit: 900_000,
+    amount: 900_000,
+  },
+];
+
+/** Findings precomputed from the demo transactions via the shared engine. */
+export const DEMO_FINDINGS: AuditFinding[] = runAudit(DEMO_TRANSACTIONS);
