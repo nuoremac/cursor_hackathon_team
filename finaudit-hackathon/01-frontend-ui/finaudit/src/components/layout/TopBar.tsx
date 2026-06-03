@@ -57,12 +57,6 @@ export function TopBar() {
             <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-[var(--danger)]" />
           ) : null}
         </button>
-        <span
-          className="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-accent text-[11px] font-medium text-on-accent"
-          aria-hidden
-        >
-          AK
-        </span>
       </div>
     </header>
   );

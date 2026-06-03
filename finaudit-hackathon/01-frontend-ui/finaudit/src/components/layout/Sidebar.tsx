@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   IconLayoutDashboard,
   IconTable,
   IconAlertTriangle,
   IconWand,
   IconSettings,
-  IconLogout,
+  IconHome,
   IconLayoutSidebarLeftCollapse,
   IconLayoutSidebarLeftExpand,
   IconX,
@@ -147,31 +148,14 @@ export function Sidebar() {
             {!collapsed ? <span>{t("nav.settings")}</span> : null}
           </button>
 
-          <div
-            className={`mt-2 flex items-center gap-2.5 rounded-md px-2.5 py-1.5 ${collapsed ? "lg:justify-center" : ""}`}
+          <Link
+            href="/"
+            title={t("nav.home")}
+            className={`mt-0.5 flex h-9 w-full items-center gap-2.5 rounded-md px-2.5 text-[13px] text-tsecondary transition-colors hover:bg-surface-2 ${collapsed ? "lg:justify-center" : ""}`}
           >
-            <span
-              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-[11px] font-medium text-on-accent"
-              aria-hidden
-            >
-              AK
-            </span>
-            {!collapsed ? (
-              <>
-                <span className="min-w-0 flex-1 truncate text-[12px] text-tprimary">
-                  Aïcha Kamga
-                </span>
-                <button
-                  type="button"
-                  aria-label={t("nav.logout")}
-                  title={t("nav.logout")}
-                  className="flex h-6 w-6 items-center justify-center rounded text-tmuted hover:text-tprimary"
-                >
-                  <IconLogout size={14} />
-                </button>
-              </>
-            ) : null}
-          </div>
+            <IconHome size={16} stroke={1.75} className="shrink-0" />
+            {!collapsed ? <span>{t("nav.home")}</span> : null}
+          </Link>
         </div>
       </aside>
     </>

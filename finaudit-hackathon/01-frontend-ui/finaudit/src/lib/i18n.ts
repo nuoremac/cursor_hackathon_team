@@ -5,6 +5,24 @@ const en = {
   "app.name": "Audit Radar",
   "app.tagline": "Audit Assistant",
 
+  // Landing page
+  "landing.badge": "AI-powered audit assistant",
+  "landing.titleLine1": "Spot risky transactions,",
+  "landing.titleLine2": "in just a few seconds.",
+  "landing.subtitle":
+    "Audit Radar analyses your accounting entries, highlights anomalies and tells the auditor exactly what to check.",
+  "landing.start": "Get started",
+  "landing.note": "No account required — instant access to the dashboard.",
+  "landing.feature1.title": "Anomaly detection",
+  "landing.feature1.text":
+    "Automatically flag duplicates, negative amounts and suspicious entries.",
+  "landing.feature2.title": "AI explanations",
+  "landing.feature2.text": "Understand each risk and the action to take, in one click.",
+  "landing.feature3.title": "Clear dashboard",
+  "landing.feature3.text":
+    "Key metrics, risk distribution and a complete audit report.",
+  "landing.footer": "Audit Assistant",
+
   // Sidebar nav
   "nav.dashboard": "Dashboard",
   "nav.transactions": "Transactions",
@@ -13,6 +31,7 @@ const en = {
   "nav.settings": "Settings",
   "nav.comingSoon": "Coming soon",
   "nav.logout": "Log out",
+  "nav.home": "Home",
   "nav.collapse": "Collapse sidebar",
   "nav.expand": "Expand sidebar",
 
@@ -166,6 +185,23 @@ const fr: Dictionary = {
   "app.name": "Audit Radar",
   "app.tagline": "Assistant d'audit",
 
+  "landing.badge": "Assistant d'audit propulsé par l'IA",
+  "landing.titleLine1": "Détectez les transactions à risque,",
+  "landing.titleLine2": "en quelques secondes.",
+  "landing.subtitle":
+    "Audit Radar analyse vos écritures comptables, met en évidence les anomalies et explique à l'auditeur ce qu'il faut vérifier.",
+  "landing.start": "Commencer",
+  "landing.note": "Aucun compte requis — accès immédiat au tableau de bord.",
+  "landing.feature1.title": "Détection d'anomalies",
+  "landing.feature1.text":
+    "Repérez automatiquement doublons, montants négatifs et écritures suspectes.",
+  "landing.feature2.title": "Explications par IA",
+  "landing.feature2.text": "Comprenez chaque risque et l'action à mener, en un clic.",
+  "landing.feature3.title": "Tableau de bord clair",
+  "landing.feature3.text":
+    "Indicateurs clés, répartition des risques et rapport d'audit complet.",
+  "landing.footer": "Assistant d'audit",
+
   "nav.dashboard": "Tableau de bord",
   "nav.transactions": "Transactions",
   "nav.report": "Rapport d'anomalies",
@@ -173,6 +209,7 @@ const fr: Dictionary = {
   "nav.settings": "Paramètres",
   "nav.comingSoon": "Bientôt disponible",
   "nav.logout": "Déconnexion",
+  "nav.home": "Accueil",
   "nav.collapse": "Réduire le menu",
   "nav.expand": "Agrandir le menu",
 
