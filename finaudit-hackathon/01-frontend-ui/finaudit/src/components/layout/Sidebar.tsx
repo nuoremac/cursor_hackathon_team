@@ -7,7 +7,6 @@ import {
   IconTable,
   IconAlertTriangle,
   IconWand,
-  IconSettings,
   IconHome,
   IconLayoutSidebarLeftCollapse,
   IconLayoutSidebarLeftExpand,
@@ -63,9 +62,8 @@ export function Sidebar() {
       ) : null}
 
       <aside
-        className={`${collapsed ? "lg:w-[52px]" : "lg:w-[220px]"} ${
-          mobileNavOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-        } fixed inset-y-0 left-0 z-50 flex w-[240px] flex-col border-r border-[var(--border)] bg-sidebar transition-[width,transform] duration-200 lg:static lg:z-auto`}
+        className={`${collapsed ? "lg:w-[52px]" : "lg:w-[220px]"} ${mobileNavOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+          } fixed inset-y-0 left-0 z-50 flex w-[240px] flex-col border-r border-[var(--border)] bg-sidebar transition-[width,transform] duration-200 lg:static lg:z-auto`}
         aria-label="Primary"
       >
         {/* Logo row */}
@@ -78,7 +76,7 @@ export function Sidebar() {
           >
             <span className="relative flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-md bg-[#0b1a2b] ring-1 ring-[var(--border)]">
               <Image
-                src="/logo.png"
+                src="/logo-app.png"
                 alt={APP_NAME}
                 fill
                 sizes="28px"
@@ -140,19 +138,10 @@ export function Sidebar() {
 
         {/* Bottom */}
         <div className="border-t border-[var(--border)] px-2 py-3">
-          <button
-            type="button"
-            className={`flex h-9 w-full items-center gap-2.5 rounded-md px-2.5 text-[13px] text-tsecondary transition-colors hover:bg-surface-2 ${collapsed ? "lg:justify-center" : ""}`}
-            title={t("nav.settings")}
-          >
-            <IconSettings size={16} stroke={1.75} className="shrink-0" />
-            {!collapsed ? <span>{t("nav.settings")}</span> : null}
-          </button>
-
           <Link
             href="/"
             title={t("nav.home")}
-            className={`mt-0.5 flex h-9 w-full items-center gap-2.5 rounded-md px-2.5 text-[13px] text-tsecondary transition-colors hover:bg-surface-2 ${collapsed ? "lg:justify-center" : ""}`}
+            className={`flex h-9 w-full items-center gap-2.5 rounded-md px-2.5 text-[13px] text-tsecondary transition-colors hover:bg-surface-2 ${collapsed ? "lg:justify-center" : ""}`}
           >
             <IconHome size={16} stroke={1.75} className="shrink-0" />
             {!collapsed ? <span>{t("nav.home")}</span> : null}
@@ -186,13 +175,11 @@ function NavButton({
       onClick={onClick}
       aria-current={active ? "page" : undefined}
       title={collapsed ? label : undefined}
-      className={`group relative flex h-9 w-full items-center gap-2.5 rounded-md px-2.5 text-[13px] transition-colors duration-150 ${
-        collapsed ? "lg:justify-center" : ""
-      } ${
-        active
+      className={`group relative flex h-9 w-full items-center gap-2.5 rounded-md px-2.5 text-[13px] transition-colors duration-150 ${collapsed ? "lg:justify-center" : ""
+        } ${active
           ? "bg-accent-soft font-medium text-accent"
           : "text-tsecondary hover:bg-surface-2"
-      }`}
+        }`}
     >
       {active ? (
         <span

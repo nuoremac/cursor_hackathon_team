@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "FinAudit — AI accounting anomaly detector",
   description:
     "Enterprise audit assistant that detects risky accounting transactions and explains them with AI.",
-  icons: { icon: "/logo.png" },
+  icons: { icon: "/logo-app.png" },
 };
 
 // Apply persisted theme before paint to avoid a flash / hydration mismatch.

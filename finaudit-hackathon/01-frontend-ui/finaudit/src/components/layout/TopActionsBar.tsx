@@ -50,6 +50,7 @@ export function TopActionsBar() {
           size="sm"
           icon={<IconDatabase size={15} stroke={1.85} />}
           onClick={loadDemoData}
+          disabled={hasData}
           fullWidth
           className="sm:w-auto"
         >

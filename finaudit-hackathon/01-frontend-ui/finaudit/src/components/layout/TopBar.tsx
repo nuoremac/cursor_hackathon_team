@@ -1,6 +1,6 @@
 "use client";
 
-import { IconBell, IconMenu2 } from "@tabler/icons-react";
+import { IconMenu2 } from "@tabler/icons-react";
 import { useApp } from "@/context/AppContext";
 import type { SectionId } from "@/lib/types";
 import type { TranslationKey } from "@/lib/i18n";
@@ -47,17 +47,8 @@ export function TopBar() {
       <div className="ml-auto flex items-center gap-2.5">
         <LanguageSwitcher />
         <ThemeToggle />
-        <button
-          type="button"
-          aria-label={t("topbar.notifications")}
-          className="relative flex h-8 w-8 items-center justify-center rounded-md text-tsecondary transition-colors hover:bg-surface-2"
-        >
-          <IconBell size={18} stroke={1.75} />
-          {auditRun ? (
-            <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-[var(--danger)]" />
-          ) : null}
-        </button>
       </div>
     </header>
   );
 }
+
